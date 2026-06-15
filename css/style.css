@@ -1,0 +1,183 @@
+:root {
+  --ink: #2a1f3d;
+  --panel: #2d2440;
+  --panel-soft: #3a2f55;
+  --accent: #ffd6f5;
+  --accent-2: #b6f5d8;
+  --gold: #ffe9a8;
+  --frame: #6b4ea3;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: radial-gradient(1200px 600px at 50% -10%, #43356b 0%, #271b3f 60%, #1a1230 100%);
+  color: #f5ecff;
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+#game-shell {
+  width: min(96vw, 1000px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#topbar { text-align: center; }
+#topbar h1 {
+  margin: 4px 0 0;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-shadow: 0 2px 0 #00000055, 0 0 18px #ffe9a855;
+}
+#topbar .tagline {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+#stage {
+  position: relative;
+  border: 4px solid var(--frame);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px #00000066, inset 0 0 60px #00000044;
+  aspect-ratio: 4 / 3;
+}
+
+canvas#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: #1b2a1c;
+  cursor: crosshair;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 35%, #2d244099, #160f29ee);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.35s ease;
+}
+.overlay.hidden { opacity: 0; pointer-events: none; }
+
+.panel {
+  width: min(86%, 460px);
+  background: linear-gradient(180deg, var(--panel), var(--panel-soft));
+  border: 3px solid var(--frame);
+  border-radius: 14px;
+  padding: 22px 26px;
+  text-align: center;
+  box-shadow: 0 10px 30px #00000088;
+}
+.panel h2 {
+  margin: 0 0 8px;
+  color: var(--gold);
+  letter-spacing: 1px;
+}
+.panel p { font-size: 14px; line-height: 1.5; margin: 8px 0; }
+.panel .hint { color: var(--accent-2); font-style: italic; }
+.controls {
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 14px auto;
+  max-width: 320px;
+  list-style: none;
+  padding: 0;
+}
+.controls b {
+  color: var(--gold);
+  background: #00000033;
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+
+button#startBtn {
+  margin-top: 10px;
+  padding: 11px 22px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--gold), #ffcf6b);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #b9892f, 0 8px 16px #00000066;
+  transition: transform 0.08s ease;
+}
+button#startBtn:active { transform: translateY(3px); box-shadow: 0 1px 0 #b9892f; }
+
+/* HUD */
+#hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: linear-gradient(180deg, var(--panel), var(--panel-soft));
+  border: 3px solid var(--frame);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+.hud-left, .hud-right { display: flex; gap: 14px; align-items: center; min-width: 150px; }
+.hud-right { justify-content: flex-end; }
+#phase { opacity: 0.7; font-size: 12px; }
+#dust { color: var(--gold); font-weight: bold; }
+#water { color: #9fd9ff; }
+
+#hotbar { display: flex; gap: 8px; }
+.slot {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  background: #1d1730;
+  border: 2px solid #4a3a73;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+.slot .key {
+  position: absolute;
+  top: 1px; left: 4px;
+  font-size: 9px;
+  opacity: 0.55;
+}
+.slot .label { font-size: 8px; opacity: 0.7; }
+.slot.active {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px #ffe9a877, inset 0 0 10px #ffe9a833;
+  background: #2a2142;
+}
+
+.toast {
+  text-align: center;
+  min-height: 18px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.toast.show { opacity: 1; }

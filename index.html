@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fairy Garden — a pixel life sim</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="game-shell">
+    <header id="topbar">
+      <h1>✦ Fairy Garden ✦</h1>
+      <p class="tagline">Tend a little patch of magic.</p>
+    </header>
+
+    <div id="stage">
+      <canvas id="game" width="960" height="720"></canvas>
+
+      <!-- Title / help overlay -->
+      <div id="overlay" class="overlay">
+        <div class="panel">
+          <h2>Fairy Garden</h2>
+          <p>You are a garden fairy. Coax sleepy soil into bloom and gather Fairy Dust ✨.</p>
+          <ul class="controls">
+            <li><b>WASD</b> / <b>Arrows</b> — fly around</li>
+            <li><b>1</b> Hoe · <b>2</b> Seeds · <b>3</b> Watering Can · <b>4</b> Harvest</li>
+            <li><b>Space</b> / <b>E</b> — use tool on the tile you face</li>
+            <li><b>Mouse click</b> — use tool on a nearby tile</li>
+            <li><b>R</b> — refill watering can at the pond</li>
+          </ul>
+          <p class="hint">Till grass → plant a seed → water it → wait for it to glow → harvest!</p>
+          <button id="startBtn">Enter the garden</button>
+        </div>
+      </div>
+    </div>
+
+    <footer id="hud">
+      <div class="hud-left">
+        <span id="clock">Day 1 · 06:00</span>
+        <span id="phase">Morning</span>
+      </div>
+      <div class="hud-center" id="hotbar"><!-- tool slots injected by JS --></div>
+      <div class="hud-right">
+        <span id="dust">✨ 0</span>
+        <span id="water">💧 10/10</span>
+      </div>
+    </footer>
+
+    <p id="toast" class="toast"></p>
+  </div>
+
+  <!-- loaded in order; shared via global scope (works from file://) -->
+  <script src="src/sprites.js"></script>
+  <script src="src/input.js"></script>
+  <script src="src/world.js"></script>
+  <script src="src/player.js"></script>
+  <script src="src/game.js"></script>
+</body>
+</html>
