@@ -11,6 +11,8 @@ step** — it's pure HTML, CSS and vanilla JavaScript.
 
 ![pixel fairy farming](https://img.shields.io/badge/style-pixel%20art-ff9ed8) ![no build](https://img.shields.io/badge/build-none-b6f5d8)
 
+> Also in this repo: **[Pulse](health/)**, a personal health, training and weekly accountability app.
+
 ## How to play
 
 | Action | Keys |

@@ -1,0 +1,10 @@
+{
+  "name": "pulse-health",
+  "private": true,
+  "type": "module",
+  "description": "Personal health, training and weekly accountability. No build step.",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "test": "node --test test/*.test.mjs"
+  }
+}
